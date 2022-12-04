@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, after_this_request
 from flask import send_file
 
 from werkzeug.utils import secure_filename
@@ -32,7 +32,7 @@ def index():
 @app.route('/', methods=['POST'])
 def upload_file():
     # after the file is downloaded, clear the tmp directory (files here are after completed runs, probably)
-    @app.after_request
+    @after_this_request
     def delete(response):
         for f in os.listdir(TEMP_DIR):
             os.remove(os.path.join(TEMP_DIR, f))
@@ -67,10 +67,10 @@ def upload_file():
         os.rename(infile, TEMP_DIR + "/" + infile)
         os.rename(outfile, TEMP_DIR + "/" + outfile)
         # send user a file to download
-        return send_file(TEMP_DIR + "/" + outfile, attachment_filename="split_"+secure_filename(uploaded_file.filename), as_attachment=True)
+        return send_file(TEMP_DIR + "/" + outfile, download_name="split_"+secure_filename(uploaded_file.filename), as_attachment=True)
 
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.debug = True
+    # app.debug = True
     app.run()
