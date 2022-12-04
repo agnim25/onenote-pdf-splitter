@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <title>PDF Splitter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300'><link rel="stylesheet" href="{{ url_for('static',filename='index.css') }}">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1R4SPSNQZK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1R4SPSNQZK');
+
+</script>
+  </head>
+<script>
+
+</script>
+  <body>
+
+<div class="upload">
+ <div class="upload-files">
+  <header>
+   <p>
+    <i class="fa fa-bars" aria-hidden="true"></i>
+    <span class="up" style="margin-left: -2px">pdf</span>
+    <span class="load" style="margin-left: -5px">splitter</span>
+   </p>
+  </header>
+<form name="form" id="form" method="POST" action="" enctype="multipart/form-data">
+  <div class="body" id="drop">
+   <i class="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+   <p class="pointer-none">Want to split OneNote PDFs by problem?<br>Add a horizontal line between problems, then we'll split it for you!<br><br>
+    Click <a href="{{ url_for('static',filename='Example_splitter_input.pdf') }}">here</a> for an example OneNote input PDF.<br><br>
+    <span style="font-style:italic"><b>Drag and drop</b> files here or</span><br /><a href="" id="triggerFile"><button id="select">SELECT FILE</button></a></p>
+			<input id='fileinput' type="file" name="file" onchange="form.submit()"/>
+  </div>
+ </div>
+    </form>
+</div>
+
+  <script  src="{{ url_for('static',filename='script.js') }}"></script>
+<script>
+
+
+
+var dropArea = document.getElementById('drop');
+dropArea.addEventListener('drop', handl, false);
+function handl(e) {
+document.getElementById('fileinput').files = e.dataTransfer.files;
+	e.preventDefault();
+  e.stopPropagation();
+document.form.submit();
+};
+
+</script>
+  </body>
+</html>

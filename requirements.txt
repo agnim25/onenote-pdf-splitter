@@ -1,0 +1,8 @@
+pymupdf
+matplotlib
+numpy
+opencv-python-headless
+Pillow==8.4.0
+PyPDF2==1.26.0
+flask
+gunicorn
