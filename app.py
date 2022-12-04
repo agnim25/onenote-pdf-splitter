@@ -70,3 +70,6 @@ def upload_file():
         return send_file(TEMP_DIR + "/" + outfile, attachment_filename="split_"+secure_filename(uploaded_file.filename), as_attachment=True)
 
     return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
