@@ -23,8 +23,8 @@ def pixel2window(y, length, ysize):
 def split(i_name=None, o_name=None, n=0):
     ## PARAMETERS FOR SPLIT
     ysize = 50          # height of window
-    min_length = .7     # min length for line, fraction of width of page
-    max_height = .2     # max height for line, fraction of height of window
+    min_length = .5     # min length for line, fraction of width of page
+    max_height = .1     # max height for line, fraction of height of window
 
     ## if provided, split into n pages of uniform length
     if n != 0:
