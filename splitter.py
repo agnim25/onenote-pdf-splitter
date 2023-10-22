@@ -53,7 +53,7 @@ def split(i_name=None, o_name=None, n=0):
         # convert to image
         doc = fitz.open(i_name)
         page = doc.load_page(0)  # number of page
-        pix = page.get_pixmap()
+        pix = page.get_pixmap(matrix=fitz.Matrix(300 / 72, 300 / 72))
         pix.save(im_path)
 
         # convert to binary image
