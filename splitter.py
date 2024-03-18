@@ -146,6 +146,7 @@ if __name__ == '__main__':
         i_name = sys.argv[1]
         o_name = sys.argv[2]
         n = 0
+        split(i_name, o_name)
     else:
         print ("HELP: python3 splitter.py input.pdf output.pdf")
         exit(1)
