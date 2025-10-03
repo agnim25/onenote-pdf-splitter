@@ -1,8 +1,7 @@
 import fitz
-import matplotlib.pyplot as plt
 from pathlib import Path
-from PyPDF2 import PdfFileReader
-from PyPDF2 import PdfFileWriter
+from pypdf import PdfReader
+from pypdf import PdfWriter
 from PIL import Image
 import numpy as np
 import cv2
@@ -30,10 +29,10 @@ def split(i_name=None, o_name=None, n=0):
     if n != 0:
         print(f"Splitting {i_name} into {n} pages, output to {o_name}")
 
-        pdf = PdfFileReader(i_name)
+        pdf = PdfReader(i_name)
 
-        pdf_writer = PdfFileWriter()
-        first_page = pdf.getPage(0)
+        pdf_writer = PdfWriter()
+        first_page = pdf.pages[0]
 
         i = n - 1
         while i >= 0:
@@ -41,7 +40,7 @@ def split(i_name=None, o_name=None, n=0):
             (x, y) = current.mediaBox.upperRight
             current.mediaBox.upperRight = (x, y * (i + 1) / n)
             current.mediaBox.lowerRight = (x, y * (i) / n)
-            pdf_writer.addPage(current)
+            pdf_writer.add_page(current)
             i -= 1
 
         with Path(o_name).open(mode="wb") as output_file:

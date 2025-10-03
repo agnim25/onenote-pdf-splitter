@@ -6,10 +6,9 @@ import hashlib
 import time
 import os
 import fitz
-import matplotlib.pyplot as plt
 from pathlib import Path
-from PyPDF2 import PdfFileReader
-from PyPDF2 import PdfFileWriter
+from pypdf import PdfReader
+from pypdf import PdfWriter
 from PIL import Image
 import numpy as np
 import cv2
