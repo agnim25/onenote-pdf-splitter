@@ -1,0 +1,13 @@
+*.md
+README.md
+.git
+.gitignore
+*.pdf
+api/static/*.pdf
+splitter.py
+__pycache__
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+
